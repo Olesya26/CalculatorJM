@@ -1,6 +1,6 @@
 package mathematicalSimbols;
 
-enum RomanNumerals {
+public enum RomanNumerals {
     ONE("I", 1),
     TWO("II", 2),
     THREE("III", 3),
@@ -10,7 +10,16 @@ enum RomanNumerals {
     SEVEN("VII", 7),
     EIGHT("VII", 8),
     NINE("IX", 9),
-    TEN("X", 10);
+    TEN("X", 10),
+    TWENTY("XX", 20),
+    THIRTY("XXX", 30),
+    FORTY("XL", 40),
+    FIFTY("L", 50),
+    SIXTY("LX", 60),
+    SEVENTY("LXX", 70),
+    EIGHTY("LXXX", 80),
+    NINETY("XC", 90),
+    ONE_HUNDRED("C", 100);
 
 
     public final String romanNumerals;

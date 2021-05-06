@@ -3,7 +3,7 @@ package mathematicalSimbols;
 public enum MathematicalSymbols {
     ADDITION("+", 0),
     SUBTRACTION("-", 1),
-    DIVISION("÷", 2),
+    DIVISION("/", 2),
     MULTIPLICATION("*", 3);
 
     public final String symbol;
