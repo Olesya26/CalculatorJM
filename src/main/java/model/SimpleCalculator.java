@@ -6,7 +6,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.List;
 
-public class SimpleCalculator implements Calculate {
+public class SimpleCalculator extends Calculate {
     public int calculationNumbers(List<String> symbolList, List<Integer> numberList) {
         for (MathematicalSymbols symbols : MathematicalSymbols.values()) {
             if (symbolList.get(0).equals(symbols.symbol)) {

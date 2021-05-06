@@ -8,7 +8,7 @@ public enum RomanNumerals {
     FIVE("V", 5),
     SIX("VI", 6),
     SEVEN("VII", 7),
-    EIGHT("VII", 8),
+    EIGHT("VIII", 8),
     NINE("IX", 9),
     TEN("X", 10),
     TWENTY("XX", 20),
@@ -22,11 +22,11 @@ public enum RomanNumerals {
     ONE_HUNDRED("C", 100);
 
 
-    public final String romanNumerals;
-    public final int arabicNumerals;
+    public final String romanNumeral;
+    public final int arabicNumeral;
 
-    RomanNumerals(String romanNumerals, int arabicNumerals) {
-        this.arabicNumerals = arabicNumerals;
-        this.romanNumerals = romanNumerals;
+    RomanNumerals(String romanNumeral, int arabicNumeral) {
+        this.arabicNumeral = arabicNumeral;
+        this.romanNumeral = romanNumeral;
     }
 }

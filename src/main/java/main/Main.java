@@ -1,7 +1,9 @@
 package main;
 
 import model.ParserArgs;
+import model.ReaderSystemArgs;
 import model.SimpleCalculator;
+import model.WriterSystemArgs;
 
 public class Main {
 
@@ -15,14 +17,14 @@ public class Main {
 
 
     private static void calculate() {
-        ParserArgs parserArgs = new ParserArgs();
-        SimpleCalculator simpleCalculator = new SimpleCalculator();
-        parserArgs.parserArgs();
-        int s = simpleCalculator.calculationNumbers(parserArgs.symbolList, parserArgs.integerList);
-        parserArgs.writerSystem(s);
-
+            ParserArgs parserArgs = new ParserArgs();
+            parserArgs.parserArgs();
+            SimpleCalculator simpleCalculator = new SimpleCalculator();
+            int s = simpleCalculator.calculationNumbers(parserArgs.symbolList, parserArgs.integerList);
+            WriterSystemArgs writerSystemArgs = new WriterSystemArgs();
+            writerSystemArgs.writerSystem(s, parserArgs.getReaderSystemArgs());
+        }
     }
-}
 
 
 
