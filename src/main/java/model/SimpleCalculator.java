@@ -15,6 +15,7 @@ public class SimpleCalculator extends Calculate {
                 for (Method method : methods) {
                     if (method.toString().contains(mathematicalSymbol.name().toLowerCase())) {
                         result = (int) method.invoke(this, numberList.get(0), numberList.get(1));
+                        break;
                     }
                 }
             }
