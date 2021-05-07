@@ -7,22 +7,19 @@ import java.lang.reflect.Method;
 import java.util.List;
 
 public class SimpleCalculator extends Calculate {
-    public int calculationNumbers(List<String> symbolList, List<Integer> numberList) {
-        for (MathematicalSymbols symbols : MathematicalSymbols.values()) {
-            if (symbolList.get(0).equals(symbols.symbol)) {
+    public int calculationNumbers(List<String> symbolList, List<Integer> numberList) throws InvocationTargetException, IllegalAccessException {
+        int result = 0;
+        for (MathematicalSymbols mathematicalSymbol : MathematicalSymbols.values()) {
+            if (symbolList.get(0).equals(mathematicalSymbol.symbol)) {
                 Method[] methods = SimpleCalculator.class.getMethods();
                 for (Method method : methods) {
-                    if (method.toString().contains(symbols.name().toLowerCase())) {
-                        try {
-                            return (int) method.invoke(this, numberList.get(0), numberList.get(1));
-                        } catch (IllegalAccessException | InvocationTargetException e) {
-                            e.printStackTrace();
-                        }
+                    if (method.toString().contains(mathematicalSymbol.name().toLowerCase())) {
+                        result = (int) method.invoke(this, numberList.get(0), numberList.get(1));
                     }
                 }
             }
         }
-        return 0;
+        return result;
     }
 
     @Override
@@ -42,9 +39,6 @@ public class SimpleCalculator extends Calculate {
 
     @Override
     public int divisionNumbers(int numberOne, int numberTwo) {
-        if (numberTwo == 0) {
-            System.err.println("Деление на 0 невозможно.");
-        }
         return numberOne / numberTwo;
     }
 }

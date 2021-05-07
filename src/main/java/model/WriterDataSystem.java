@@ -1,15 +1,21 @@
 package model;
 
+import exception.CalculatorException;
 import mathematicalSimbols.RomanNumerals;
 
 import java.util.ArrayList;
 
-public class WriterSystemArgs {
-    public void writerSystem(int result, ReaderSystemArgs readerSystemArgs) {
-        String inputData = readerSystemArgs.getInputData();
-        String[] roman = {"I", "V", "X", "L", "C"};
-        for (String s : roman) {
-            if (inputData.contains(s)) {
+public class WriterDataSystem {
+    public void writerSystem(int result, ReaderDataSystem readerSystemArgs) {
+        String inputData = readerSystemArgs.getInputLine();
+        String[] romanNumerals = {"I", "V", "X", "L", "C"};
+        for (String symbol : romanNumerals) {
+            if (inputData.contains(symbol)) {
+                if (result <= 0) {
+                    throw new CalculatorException("Ноль или все что меньше него - это отсутсвие числа. " +
+                            "А зачем записывать то, чего нет.\n" +
+                            "P.S. Римляне. " + "\u2764");
+                }
                 parserArabicNumerals(result);
                 break;
             } else {

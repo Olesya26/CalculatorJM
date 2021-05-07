@@ -1,12 +1,11 @@
 package main;
 
-import model.ParserArgs;
-import model.ReaderSystemArgs;
-import model.SimpleCalculator;
-import model.WriterSystemArgs;
+import model.*;
+
+import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 
 public class Main {
-
     public static void main(String[] args) {
         try {
             calculate();
@@ -15,16 +14,22 @@ public class Main {
         }
     }
 
-
-    private static void calculate() {
-            ParserArgs parserArgs = new ParserArgs();
-            parserArgs.parserArgs();
-            SimpleCalculator simpleCalculator = new SimpleCalculator();
-            int s = simpleCalculator.calculationNumbers(parserArgs.symbolList, parserArgs.integerList);
-            WriterSystemArgs writerSystemArgs = new WriterSystemArgs();
-            writerSystemArgs.writerSystem(s, parserArgs.getReaderSystemArgs());
+    private static void calculate() throws IOException, InvocationTargetException, IllegalAccessException {
+        boolean start = true;
+        while (start) {
+            CheckingInputData checkingData = new CheckingInputData();
+            checkingData.checkAndParseData();
+            if (checkingData.getReaderSystemData().getInputLine().equalsIgnoreCase("exit")) {
+                start = false;
+            } else {
+                SimpleCalculator calculator = new SimpleCalculator();
+                int result = calculator.calculationNumbers(checkingData.symbolList, checkingData.integerList);
+                WriterDataSystem writerSystemData = new WriterDataSystem();
+                writerSystemData.writerSystem(result, checkingData.getReaderSystemData());
+            }
         }
     }
+}
 
 
 
